@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Panel Administracyjny</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for slope in slopes %}
+        <tr>
+            <th>{{slope.id}}</th>
+            <td>{{slope.name}}</td>
+            <td>{{slope.city}}</td>
+            <td>
+                <a href="{{slope.editUrl}}" title="Edit"> Edit </a>
+                <a href="{{slope.deleteUrl}}" title="Delete"> Delete </a>
+                <a href="{{slope.commentsUrl}}" title="Comments"> Comments </a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin-store') }}"> Create new </a>
+    <br>
+    <a href="{{ path('logout') }}"> Logout </a>
+{% endblock %}

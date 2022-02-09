@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+{% block body %}
+    Name: {{ slope.name }}
+    <br>
+    Description: {{ slope.description }}
+    <br>
+    Geolocation: {{ slope.lat }} {{ slope.lng }}
+    <br>
+    Homepage: {{ slope.homepage }}
+    
+    <br><br>
+    Opening Hours:
+    <br>
+    {% for day, hours in slope.openinghours %}
+        {{ day }} {{ hours.from }} - {{ hours.to }}
+        <br>
+    {% endfor %}
+    <br>
+    Prices:
+    <br>
+    {% for format, price in slope.prices %}
+        {{ format }} {{ (price/10)|number_format(2) }}
+        <br>
+    {% endfor %}
+    <br><br>
+    Add comment
+    {{ form(form) }}
+    
+    Comments:
+    {% for comment in comments %}
+        <br>
+        {{ comment.author }}: {{ comment.content }}
+    {% endfor %}
+
+    <script>
+        function onSubmit(token) {
+            document.querySelector('form[name="comment"]').submit()
+        }
+    </script>
+{% endblock %}
+

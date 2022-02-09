@@ -1,0 +1,19 @@
+a)
+SELECT AVG(q.commentsNo)
+FROM (
+	SELECT slope.id, COUNT(comment.id) as CommentsNo
+	FROM slope
+	LEFT JOIN comment on slope.id = comment.slope_id
+	GROUP BY slope.id
+) AS q
+
+b)
+SELECT * FROM slope
+ORDER BY ABS(lat - 10 + lng - 70) ASC
+LIMIT 1
+
+c)
+SELECT city, COUNT(id)
+FROM slope
+GROUP BY city
+

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Panel Administracyjny</h1>
+    {{ form(form) }}
+    <a href="{{ path('admin') }}"> Back </a>
+    <br>
+    <a href="{{ path('logout') }}"> Logout </a>
+{% endblock %}
